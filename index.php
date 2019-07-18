@@ -10,7 +10,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "ppidv1";
+$dbname = "dbname";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -28,7 +28,7 @@ require('fungsi.php');
 
 
 
-if(isset($_POST['tambahpermohonan'])) {
+if(isset($_POST['add'])) {
     $nmuser = $_POST['nmuser'];
     $alamat = $_POST['alamat'];
     $pekerjaan = $_POST['pekerjaan'];
@@ -39,19 +39,7 @@ if(isset($_POST['tambahpermohonan'])) {
     $idcaraperoleh = $_POST['idcaraperoleh'];
     $idsalinan = $_POST['idsalinan'];
 
-    $sqlcaraperoleh = mysqli_query($conn, "select nmcaraperoleh from cara_peroleh where idcaraperoleh='$idcaraperoleh'");
-    $rowcaraperoleh = mysqli_fetch_array($sqlcaraperoleh);
-    $nmcaraperoleh=$rowcaraperoleh['nmcaraperoleh'];
-
-    $sqlsalinan = mysqli_query($conn, "select nmsalinan from salinan where  idsalinan='$idsalinan'");
-    $rowsalinan = mysqli_fetch_array($sqlsalinan);
-    $nmsalinan = $rowsalinan['nmsalinan'];
-
-    $querycekmaxiduser = mysqli_query($conn,"SELECT MAX(iduser) as maxiduser FROM user");
-    $cekmaxiduser = mysqli_fetch_array($querycekmaxiduser);
-    $maxiduser = $cekmaxiduser['maxiduser'] + 1;
-
-    $kodepermohonan = $_POST['kodepermohonan'];
+    
 
     function generateRandomString3($length = 6) {//generate rancode 
             $characters = '0123456789poiuytrewqasdfghjklmnbvcxzQWERTYUIOPLKJHGFDSAZXCVBNM';
@@ -78,9 +66,7 @@ return $randomString;
 $kodeunik = generateRandomString1();
 
 $curmonth = date('m');
-    $sqlcekurutan = mysqli_query($conn, "select * from permohonan_informasi where MONTH(waktupermohonan) = '$curmonth'");
-    $counturutan = mysqli_num_rows($sqlcekurutan);
-    $urutan = $counturutan + 1;
+    
 
                               // Passing `true` enables exceptions
 try {
@@ -243,7 +229,7 @@ h5 {
 ';
     //Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Bukti Permohonan Informasi Publik';
+    $mail->Subject = 'outputk';
     $mail->MsgHTML($body);
 
     $mail->send();
