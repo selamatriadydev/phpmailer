@@ -13,7 +13,7 @@ require 'phpmailer/PHPMailerAutoload.php';
     $mail->Port = 587;                                    // TCP port to connect to
 
     //Recipients
-    $mail->setFrom('amperaclien@gmail.com', 'PPID Metrokota');
+    $mail->setFrom('amperaclien@gmail.com', 'amperadev');
 
      $mail->addReplyTo('amperaclien@gmail.com', 'Information');
 ?>
