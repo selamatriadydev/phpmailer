@@ -28,7 +28,7 @@ require('fungsi.php');
 
 
 
-if(isset($_POST['add'])) {
+if(isset($_POST['tambah'])) {
     $nmuser = $_POST['nmuser'];
     $alamat = $_POST['alamat'];
     $pekerjaan = $_POST['pekerjaan'];
@@ -220,7 +220,7 @@ h5 {
 <hr>
 <table>
   <tr>
-    <th colspan="2" id="footer">Copyright©2019 Dinas Komunikasi dan Informatika - Dev By Mascoding.</th>
+    <th colspan="2" id="footer">Copyright©2019 Dev By amperadev.</th>
   </tr>
 </table>
 </div>
@@ -290,10 +290,10 @@ h5 {
                             <label>Cara Memperoleh Informasi</label><br>
 
                             <?php
-                            $sqlcaraperoleh = mysqli_query($conn, "select * from cara_peroleh where publish = 'T'");
+                            $sqlcaraperoleh = mysqli_query($conn, "select * from nmtabel where publish = 'T'");
                             while($rowcaraperoleh = mysqli_fetch_array($sqlcaraperoleh)) { ?>
                             <label class="radio-inline">
-                                <input type="radio" required="required" value="<?php echo $rowcaraperoleh['idcaraperoleh']?>" name="idcaraperoleh"><?php echo $rowcaraperoleh['nmcaraperoleh']?>
+                                <input type="radio" required="required" value="<?php echo $rowcaraperoleh['id']?>" name="idcaraperoleh"><?php echo $rowcaraperoleh['nmcaraperoleh']?>
                             </label><br>
                             <?php } ?>
                             
@@ -304,15 +304,15 @@ h5 {
                             <label>Cara Mendapatkan Salinan Informasi</label>
 
                             <?php
-                            $sqlsalinan = mysqli_query($conn, "select * from salinan where publish = 'T'");
-                            while($rowsalinan = mysqli_fetch_array($sqlsalinan)) { ?>
+                            $sqljos = mysqli_query($conn, "select * from jos where publish = 'T'");
+                            while($rowjos = mysqli_fetch_array($sqljos)) { ?>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" required="required" value="<?php echo $rowsalinan['idsalinan']?>" name="idsalinan"><?php echo $rowsalinan['nmsalinan']?>
+                                    <input type="radio" required="required" value="<?php echo $rowjos['idjos']?>" name="idsalinan"><?php echo $rowsalinan['nmsalinan']?>
                                 </label>
                             </div>
                             <?php } ?>
                                                     </div>
-                        <button class="btn btn-primary" type="submit" name="tambahpermohonan">Simpan</button>
+                        <button class="btn btn-primary" type="submit" name="tambah">Simpan</button>
                     </div>
                 </form>
